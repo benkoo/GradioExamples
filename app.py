@@ -1,5 +1,6 @@
 import gradio as gr
 import tensorflow as tf 
+from PIL import Image
 
 model = tf.keras.models.load_model('model.h5')
 
