@@ -1,10 +1,10 @@
 import gradio as gr
 from PIL import Image
-import tensorflow.keras.models as KerasModel
+import tensorflow.keras.models as KerasModels
 import numpy as np
 
 # Note that a tensorflow-based model called model.h5 must already been trained
-model = KerasModel.load_model('model.h5')
+model = KerasModels.load_model('model.h5')
 
 # The first utility function for image resize
 """Resize an image to have a specified number of pixels along its width and height.
