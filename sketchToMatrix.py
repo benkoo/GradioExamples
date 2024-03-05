@@ -58,7 +58,7 @@ def process_sketch(sketch_dict: Dict[str, any], pixel_count) -> Image.Image:
 
     newImg = resize_to_pixel_count(background, pixel_count)
     
-    return newImg
+    return [2, newImg]
 
 
 iface = gr.Interface(
@@ -67,7 +67,7 @@ iface = gr.Interface(
         gr.Sketchpad(),
         gr.Slider(minimum=50, maximum=500, step=10)
     ],
-    outputs='image'
+    outputs=["text", gr.Image()],
 )
 
 iface.launch()

@@ -3,6 +3,7 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 
+
 model = tf.keras.models.load_model('model.h5')
 
 
@@ -23,15 +24,19 @@ def recognize_digit(image):
             layer_image = convert_to_pil_image(layer)
             convertedFromSketchPad.paste(layer_image, (0, 0), layer_image)  
 
-    low_res = resize_to_pixel_count(convertedFromSketchPad, 28)
-    image = np.array(low_res, dtype='float32')
+    img = resize_to_pixel_count(convertedFromSketchPad, 28)
+
+    # Split the image into channels and extract the alpha channel
+    r, g, b, alpha = img.split()
+    # Convert the alpha channel to a numpy array, reshape, and normalize
+    alpha_array = np.array(alpha).reshape(1, 28, 28, 1).astype('float32') / 255
+
     
-    if image is not None:  # flatten to 1D
-        image = image.reshape((1, 28, 28, 1)).astype('float32') / 255.0
-        prediction = model.predict(image)
-        return [{str(i): float(prediction[0][i]) for i in range(10)}, low_res]
+    if alpha_array is not None:  # flatten to 1D
+        prediction = model.predict(alpha_array)
+        return [{str(i): float(prediction[0][i]) for i in range(10)}, img]
     else:
-        return ['', low_res]
+        return ['', img]
     
 
 def convert_to_pil_image(image_data):
