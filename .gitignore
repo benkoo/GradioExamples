@@ -1,3 +1,4 @@
 data/
 flagged
 .DS_Store
+__pycache__
