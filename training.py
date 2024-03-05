@@ -37,5 +37,5 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 
 model.fit(train_images, train_labels, epochs=5, batch_size=64, validation_split=0.1)
 
-model.save('model.h5')
+model.save('model.keras')
 
