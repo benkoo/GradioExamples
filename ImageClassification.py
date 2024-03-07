@@ -44,6 +44,8 @@ inception_net = tf.keras.applications.MobileNetV2()
 
 
 gr.Interface(fn=classify_image,
-             inputs=gr.Image(width=224, height=224),
+             
+             #inputs=gr.Image(width=224, height=224),
+             inputs=gr.Image(),
              outputs=[gr.Label(num_top_classes=3), gr.Image()],
              examples=["images/lion.jpg", "images/truck.jpg"]).launch()

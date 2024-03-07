@@ -11,11 +11,11 @@ model = KerasModels.load_model('model.keras')
 """Resize an image to have a specified number of pixels along its width and height.
 
 Args:
-  image: The PIL Image object to resize.
-  pixel_count: The number of pixels to resize the image to along its width and height.
+    image: The PIL Image object to resize.
+    pixel_count: The number of pixels to resize the image to along its width and height.
 
 Returns:
-  A new PIL Image object containing the resized image.
+    A new PIL Image object containing the resized image.
 """
 
 
